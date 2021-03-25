@@ -1,0 +1,18 @@
+.video-preview {
+    width: 290px;
+    height: 163px;
+    border: 1px solid black;
+    margin-bottom: 15px;
+}
+
+.video-detail {
+    width: 290px;
+    height: 94px;
+    border: 1px solid black;
+}
+
+.video-card {
+    flex-basis: 25%;
+    margin-bottom: 50px;
+    margin-top: 10px;
+}
