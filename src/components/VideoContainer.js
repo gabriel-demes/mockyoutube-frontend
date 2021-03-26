@@ -2,21 +2,24 @@ import React from 'react'
 import '../css/VideoContainer.css'
 import VideoCard from './VideoCard'
 
-function VideoContainer() {
+function VideoContainer( {videos} ) {
+
+    const videoCardComponents = videos.map(video => <VideoCard video={video}/>)
+
     return (
         <section>
-            <VideoCard />
-            <VideoCard />
-            <VideoCard />
-            <VideoCard />
-            <VideoCard />
-            <VideoCard />
-            <VideoCard />
-            <VideoCard />
-            <VideoCard />
-            <VideoCard />
-            <VideoCard />
-            <VideoCard />
+            {videoCardComponents}
+            {videoCardComponents}
+            {videoCardComponents}
+            {videoCardComponents}
+            {videoCardComponents}
+            {videoCardComponents}
+            {videoCardComponents}
+            {videoCardComponents}
+            {videoCardComponents}
+            {videoCardComponents}
+            {videoCardComponents}
+            {videoCardComponents}
         </section>
     )
 }

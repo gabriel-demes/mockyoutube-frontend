@@ -3,13 +3,24 @@ import Aside from './components/Aside';
 import Header from './components/Header';
 import VideoContainer from './components/VideoContainer';
 import VideoPage from './components/VideoPage'
+import React, { useEffect, useState } from 'react'
+
 function App() {
+
+  const [videos, setVideos] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:3000/videos')
+    .then(r => r.json())
+    .then(videos => setVideos(videos))
+  }, [])
+
   return (
     <div className="App">
       <Header />
         <main>
           <Aside />
-          <VideoContainer />
+          <VideoContainer videos={videos}/>
         </main>
         <VideoPage />
     </div>

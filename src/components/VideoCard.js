@@ -1,11 +1,13 @@
 import React from 'react'
 import '../css/VideoCard.css'
 
-function VideoCard() {
+function VideoCard( {video} ) {
     return (
         <div className="video-card">
-            <div className="video-preview">Video Card 1</div>
-            <div className="video-detail">Video Details</div>
+            <a href={video.url}>
+                <img className="video-preview" src={video.thumbnail} />
+                <div className="video-detail">{video.title}</div>
+            </a>
         </div>
     )
 }
