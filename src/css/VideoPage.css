@@ -1,0 +1,13 @@
+.player-wrapper {
+   
+    background-color: black;
+    width: 100%;
+    height: 24em;
+  
+}
+
+.react-player {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
