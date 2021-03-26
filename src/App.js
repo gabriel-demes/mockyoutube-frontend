@@ -1,6 +1,7 @@
 import './App.css';
 import Aside from './components/Aside';
 import Header from './components/Header';
+import NewVidForm from './components/NewVidForm';
 import VideoContainer from './components/VideoContainer';
 import VideoPage from './components/VideoPage'
 import React, { useEffect, useState } from 'react'
@@ -23,6 +24,7 @@ function App() {
           <VideoContainer videos={videos}/>
         </main>
         <VideoPage />
+        <NewVidForm/>
     </div>
   );
 }
