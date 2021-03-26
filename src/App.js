@@ -21,7 +21,7 @@ function App() {
       <Header />
         <main>
           <Aside />
-          <VideoContainer videos={videos}/>
+          <VideoContainer videos={videos} />
         </main>
         <VideoPage />
         <NewVidForm/>

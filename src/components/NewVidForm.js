@@ -1,4 +1,5 @@
 import {useState} from "react"
+import '../css/NewVidForm.css'
 
 const NewVidForm = () => {
 
@@ -32,17 +33,30 @@ const NewVidForm = () => {
 
     return(
         <div className="new-video-div">
-            <form  onSubmit={handleSubmit}>
-                <label>Title</label>
-                <input type="text" name="title" onChange={e=>setTitle(e.target.value)} value={title}></input>
-                <label>Desciption</label>
-                <textarea type="text" name="title" onChange={e=>setDescription(e.target.value)} value={description}></textarea>
+            <form onSubmit={handleSubmit} id="new-video-form">
+                <div className="input-control">
+                    <label>Title</label>
+                    <input type="text" name="title" onChange={e=>setTitle(e.target.value)} value={title}></input>
+                </div>
                 
-                <label>Upload Video</label>
-                <input type="file" name="video" onChange={e=>setVideo(e.target.files[0]) }/>
-                <label>Upload Thumbnail</label>
-                <input type="file" name="thumbnail"  onChange={e=>setImage(e.target.files[0])}/>
-                <input type="submit"/>
+                <div className="input-control">
+                    <label>Description</label>
+                    <textarea type="text" name="title" onChange={e=>setDescription(e.target.value)} value={description}></textarea>
+                </div>
+
+                <div className="input-control">
+                    <label>Upload Video</label>
+                    <input type="file" name="video" onChange={e=>setVideo(e.target.files[0]) }/>
+                </div>
+
+                <div className="input-control">
+                    <label>Upload Thumbnail</label>
+                    <input type="file" name="thumbnail"  onChange={e=>setImage(e.target.files[0])}/>
+                </div>
+
+                <div className="input-control">
+                    <input type="submit"/>
+                </div>
             </form>
         </div>
     )

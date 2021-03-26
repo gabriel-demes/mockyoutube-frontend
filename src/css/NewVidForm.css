@@ -1,0 +1,13 @@
+form#new-video-form {
+    display: flex;
+    flex-direction: column;
+    border: 1px black solid;
+}
+
+div.input-control {
+    margin: 20px;
+}
+
+div.input-control label {
+    margin: 10px;
+}
