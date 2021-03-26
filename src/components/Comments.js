@@ -1,6 +1,6 @@
 import React from "react"
 import Comment from "./Comment"
-
+import '../css/Comments.css'
 
 const Comments = () => {
 
@@ -11,7 +11,8 @@ const Comments = () => {
     }
 
     return (
-        <div>
+        <div className="comments">
+            <h5>Comments</h5>
             {displayComments()}
         </div>
     )

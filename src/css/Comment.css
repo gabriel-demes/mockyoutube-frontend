@@ -1,0 +1,7 @@
+div.comment{
+
+    margin: 2rem;
+    text-align: left;
+    border: 1px black solid;
+    flex-basis: auto;
+}

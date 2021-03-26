@@ -5,7 +5,6 @@ import Comments from "./Comments"
 
 const VideoPage = () => {
 
-
     return(
         <div>
         <div className="player-wrapper">
@@ -17,6 +16,12 @@ const VideoPage = () => {
             width="100%"
             height="24em"
             />
+        </div>
+        <h4 className="vidTitle">Video TItle</h4>
+        <div className="vidstats">
+            <section>#Views</section>
+            <section>👍 👎</section>
+            <section>Share</section>
         </div>
         <Comments/>
         </div>

@@ -1,9 +1,10 @@
-section {
+div.comments {
+    margin: 5em;
     border: 1px black solid;
-    width: 100%;
+    width: 80%;
     height: 100%;
-    margin: 10px 0px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    flex-direction: column;
 }
