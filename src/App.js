@@ -5,7 +5,7 @@ import NewVidForm from './components/NewVidForm';
 import VideoContainer from './components/VideoContainer';
 import VideoPage from './components/VideoPage'
 import React, { useEffect, useState } from 'react'
-
+import {Switch, Route} from "react-router-dom"
 function App() {
 
   const [videos, setVideos] = useState([])
@@ -17,15 +17,27 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
-      <Header />
-        <main>
-          <Aside />
-          <VideoContainer videos={videos} />
-        </main>
-        <VideoPage />
-        <NewVidForm/>
-    </div>
+      <div className="App">
+        <Header />
+        <Switch>
+          <Route path="/home">
+            <main>
+              <Aside />
+              <VideoContainer videos={videos} />
+            </main>
+          </Route>
+
+          <Route path="/video/:id">
+            <VideoPage />
+          </Route>
+
+          <Route path="/new">
+            <NewVidForm/>
+          </Route>
+
+        </Switch>
+      </div>
+    
   );
 }
 
