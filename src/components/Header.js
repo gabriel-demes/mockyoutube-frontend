@@ -1,4 +1,5 @@
 import React, { useState } from 'react' 
+import { Link } from 'react-router-dom'
 import '../css/Header.css'
 
 function Header() {
@@ -7,8 +8,9 @@ function Header() {
 
     return (
         <header>
-            <div id="logo"><a href="index.html">Mocktube</a></div>
-
+            <Link to="/home/">
+                <div id="logo"><a href="index.html">Mocktube</a></div>
+            </Link>
             <form id="searchbar">
                 <input type="text" id="search-input" placeholder="search..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}></input>
                 <input type="submit" id="search-btn" value="🔍"></input>

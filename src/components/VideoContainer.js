@@ -4,21 +4,10 @@ import VideoCard from './VideoCard'
 
 function VideoContainer( {videos} ) {
 
-    const videoCardComponents = videos.map(video => <VideoCard video={video}/>)
+    const videoCardComponents = videos.map(video => <VideoCard key={video.id} video={video}/>)
 
     return (
         <section>
-            {videoCardComponents}
-            {videoCardComponents}
-            {videoCardComponents}
-            {videoCardComponents}
-            {videoCardComponents}
-            {videoCardComponents}
-            {videoCardComponents}
-            {videoCardComponents}
-            {videoCardComponents}
-            {videoCardComponents}
-            {videoCardComponents}
             {videoCardComponents}
         </section>
     )
