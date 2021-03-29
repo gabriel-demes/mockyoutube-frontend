@@ -3,9 +3,9 @@ import '../css/Comment.css'
 
 const Comment = ({user, body}) => {
     const [thumbUp, setThumbUp] = useState(false)
-    const [likes, setLikes] = useState(3)
+    const [likes, setLikes] = useState(0)
     const [thumbDown, setThumbDown] = useState(false)
-    const [dislikes, setDislikes] = useState(4)
+    const [dislikes, setDislikes] = useState(0)
 
     function handleLike() {
         if (thumbUp) {

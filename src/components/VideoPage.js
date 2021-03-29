@@ -9,13 +9,26 @@ const VideoPage = () => {
     const params = useParams()
     const id = params["id"]
     const [video, setVideo] = useState("")
+    const [vidComments, setVidComments] = useState([])
 
     useEffect(()=>{
         fetch(`http://localhost:3000/videos/${id}`)
             .then(r => r.json())
-            .then(video => setVideo(video))
+            .then(video => {setVideo(video); setVidComments(video.comments)})
     },[id])
-    console.log(video.comments)
+
+
+    function createComment(body) {
+        const form = {body: body, user_id: 1, video_id: video.id, likes: 0, dislikes: 0}
+
+        fetch("http://localhost:3000/comments", {
+            method: "POST", 
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(form)
+        })
+        .then(r => r.json())
+        .then(newComment => setVidComments([...vidComments, newComment]))
+    }
     
     return(
         <div>
@@ -35,7 +48,7 @@ const VideoPage = () => {
             <section>👍{video.likes} 👎{video.dislikes}</section>
             <section>Share</section>
         </div>
-        <Comments vidComments={video.comments}/>
+        <Comments vidComments={vidComments} createComment={createComment}/>
         </div>
     )
 }
