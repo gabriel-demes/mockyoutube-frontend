@@ -1,5 +1,6 @@
 import {useState} from "react"
 import '../css/NewVidForm.css'
+import {useHistory} from "react-router-dom"
 
 const NewVidForm = () => {
 
@@ -7,6 +8,8 @@ const NewVidForm = () => {
     const[newImage, setImage] = useState("")
     const[title, setTitle]= useState("")
     const[description, setDescription]= useState("")
+
+    const history = useHistory()
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -25,7 +28,7 @@ const NewVidForm = () => {
             body: form
         })
         .then(r => r.json())
-        .then(video => console.log(video))
+        .then(video => history.push(`/video/${video.id}`))
     }
 
 
