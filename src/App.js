@@ -8,6 +8,7 @@ import React, { useEffect, useState } from 'react'
 import Login from './components/Login'
 import {Switch, Route} from "react-router-dom"
 import SignUp from "./components/SignUp"
+import SearchPage from './components/SearchPage';
 function App() {
 
   const [videos, setVideos] = useState([])
@@ -41,7 +42,7 @@ function App() {
           <Route path="/home">
             <main>
               <Aside />
-              <VideoContainer videos={videos} />
+                <VideoContainer videos={videos} />
             </main>
           </Route>
 
@@ -59,6 +60,13 @@ function App() {
 
           <Route path="/signup">
             <SignUp setUser={setUser}/>
+          </Route>
+
+          <Route path="/search/:term">
+            <main>
+              <Aside />
+              <SearchPage/>
+            </main>
           </Route>
 
         </Switch>
