@@ -12,11 +12,17 @@ const VideoPage = ({user}) => {
     const [video, setVideo] = useState("")
     const [vidComments, setVidComments] = useState([])
 
+    const [likes, setLikes] = useState(null)
+    const [dislikes, setDislikes] = useState(null)
+    const [liked, setLiked] = useState(false)
+    const [disliked, setDisliked] = useState(false)
+
     useEffect(()=>{
         fetch(`http://localhost:3000/videos/${id}`)
             .then(r => r.json())
-            .then(video => {setVideo(video); setVidComments(video.comments)})
+            .then(video => {setVideo(video); setVidComments(video.comments); setLikes(video.likes); setDislikes(video.dislikes)})
     },[id])
+
     const token = localStorage.getItem("token")
 
     useEffect(()=>{
@@ -53,6 +59,55 @@ const VideoPage = ({user}) => {
         
     }
 
+    function handleLikes() {
+        if (!liked) {
+            setLiked(true)
+            setLikes(likes + 1)
+            fetch(`http://localhost:3000/videos/${id}`, {
+                method: "PATCH", 
+                headers: {
+                    "Content-Type": "application/json"},
+                body: JSON.stringify({...video, likes: likes})
+            })
+            .then(r => r.json())
+            .then(newVideo => console.log(newVideo)) }
+        else {
+            setLiked(false)
+            setLikes(likes - 1)
+            fetch(`http://localhost:3000/videos/${id}`, {
+                method: "PATCH", 
+                headers: {
+                    "Content-Type": "application/json"},
+                body: JSON.stringify({...video, likes: likes})
+            })
+        }
+    }
+
+    function handleDislikes() {
+        if (!disliked) {
+            setDisliked(true)
+            setDislikes(dislikes + 1)
+            fetch(`http://localhost:3000/videos/${id}`, {
+                method: "PATCH", 
+                headers: {
+                    "Content-Type": "application/json"},
+                body: JSON.stringify({...video, dislikes: dislikes})
+            })
+            .then(r => r.json())
+            .then(newVideo => console.log(newVideo)) }
+
+            else {
+                setDisliked(false)
+                setDislikes(dislikes - 1)
+                fetch(`http://localhost:3000/videos/${id}`, {
+                    method: "PATCH", 
+                    headers: {
+                        "Content-Type": "application/json"},
+                    body: JSON.stringify({...video, likes: dislikes})
+                })
+            }
+    }
+
     
     return(
         <div>
@@ -69,7 +124,10 @@ const VideoPage = ({user}) => {
         <h4 className="vidTitle">{video.title}</h4>
         <div className="vidstats">
             <section>{video.views} Views</section>
-            <section>👍{video.likes} 👎{video.dislikes}</section>
+            <section>
+                <span onClick={handleLikes}>👍 {likes}</span> 
+                <span onClick={handleDislikes}>👎 {dislikes}</span>
+            </section>
             <section>Share</section>
         </div>
         <Comments vidComments={vidComments} createComment={createComment} user={user}/>

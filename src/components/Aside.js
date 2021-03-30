@@ -7,12 +7,11 @@ function Aside() {
         <aside>
             <div><Link to="/home">Home</Link></div>
             <div><Link to="/new">Upload a Video</Link></div>
-            <div><div href="#">Friends</div></div>
-            <div><div href="#">Favorites</div></div>
-            
-            <div><div href="#">Library</div></div>
-            <div><div href="#">Videos</div></div>
-            <div><div href="#">History</div></div>
+            <div><Link to="#">Friends</Link></div>
+            <div><Link to="#">Favorites</Link></div>
+            <div><Link to="#">Library</Link></div>
+            <div><Link to="#">Videos</Link></div>
+            <div><Link to="#">History</Link></div>
         </aside>
     )
 }

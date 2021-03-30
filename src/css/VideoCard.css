@@ -17,3 +17,13 @@ div.video-detail {
     margin-bottom: 50px;
     margin-top: 10px;
 }
+
+#title {
+    font-size: 18px;
+    margin: 5px;
+}
+
+#username, #created-date {
+    font-size: 16px;
+    margin: 5px;
+}

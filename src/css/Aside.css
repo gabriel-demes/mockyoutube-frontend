@@ -10,7 +10,6 @@ a {
 aside {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     margin-left: 100px;
     margin-right: 40px;
     border: 1px black solid;
