@@ -3,6 +3,7 @@ import ReactPlayer from 'react-player'
 import '../css/VideoPage.css'
 import Comments from "./Comments"
 import {useParams} from 'react-router-dom'
+import {createConsumer} from "@rails/actioncable"
 
 const VideoPage = ({user}) => {
 
@@ -16,19 +17,43 @@ const VideoPage = ({user}) => {
             .then(r => r.json())
             .then(video => {setVideo(video); setVidComments(video.comments)})
     },[id])
+    const token = localStorage.getItem("token")
 
+    useEffect(()=>{
+        const cable = createConsumer("ws://localhost:3000/cable")
+        const parameters = {
+            channel: "CommentsChannel",
+            video_id: id,
+        }
+        const handlers = {
+            recieved(data){
+                console.log(data)
+            },
+            connected(){
+                console.log("connected")
+            },
+            disconnected(){
+                console.log('disconnected')
+            }
+        }
+        cable.subscriptions.create(parameters, handlers)
+
+    }, [id])
 
     function createComment(body) {
         const form = {body: body, user_id: user.id, video_id: video.id, likes: 0, dislikes: 0}
 
         fetch("http://localhost:3000/comments", {
             method: "POST", 
-            headers: {"Content-Type": "application/json"},
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`},
             body: JSON.stringify(form)
         })
         .then(r => r.json())
         .then(newComment => setVidComments([...vidComments, newComment]))
     }
+
     
     return(
         <div>

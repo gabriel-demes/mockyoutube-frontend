@@ -22,7 +22,8 @@ function Header({user, setUser}) {
                 <input type="submit" id="search-btn" value="🔍"></input>
             </form>
 
-            {!user ? 
+            {
+            !user ? 
                 <div>
                 <Link to="/login">
                     <div id="login"> Login</div>

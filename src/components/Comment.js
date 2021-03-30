@@ -29,10 +29,10 @@ const Comment = ({user, body}) => {
 
     return (
 
-        <div className="comment">
+        <div className="comment" >
             <h6 style={{display:"inline"}}>{user} </h6>
             <p style={{display:"inline"}}>{body}</p>
-            <div class="comment-likes">
+            <div className="comment-likes">
                 <span className="thumbup" onClick={handleLike}>👍</span>&nbsp;&nbsp;<span id="likes-counter">{likes !== 0 ? likes: null }</span> &nbsp;&nbsp;&nbsp;&nbsp;
                 <span className="thumbdown" onClick={handleDislike}>👎</span>&nbsp;&nbsp;<span id="dislikes-counter">{ dislikes !== 0 ? dislikes : null }</span>
             </div>
