@@ -7,7 +7,7 @@ const Comments = ({vidComments, createComment, user}) => {
     // const hardComments = [{user:1, body:"Wow this is a reall great video!"}, {user:1, body:"Wow this is a reall great video!"}, {user:1, body:"Wow this is a reall great video!"}]
 
     const displayComments = () => {
-        return vidComments.map(comment => <Comment key={comment.id} user={comment.user} body={comment.body}/>)
+        return vidComments.map(comment => <Comment key={`${comment["user_id"]}${comment["created_at"]}`} user={comment.user} body={comment.body}/>)
     }
 
     const [body, setBody] = useState("")

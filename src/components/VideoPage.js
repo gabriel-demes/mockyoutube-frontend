@@ -26,8 +26,8 @@ const VideoPage = ({user}) => {
             video_id: id,
         }
         const handlers = {
-            recieved(data){
-                console.log(data)
+            received(data){
+                setVidComments((vidComments)=>[...vidComments, data])
             },
             connected(){
                 console.log("connected")
@@ -50,8 +50,7 @@ const VideoPage = ({user}) => {
                 Authorization: `Bearer ${token}`},
             body: JSON.stringify(form)
         })
-        .then(r => r.json())
-        .then(newComment => setVidComments([...vidComments, newComment]))
+        
     }
 
     
