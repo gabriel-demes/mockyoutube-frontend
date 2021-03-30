@@ -2,9 +2,15 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../css/Header.css'
 
-function Header() {
+function Header({user, setUser}) {
 
     const [searchTerm, setSearchTerm] = useState("")
+    
+    const logout = () =>{
+        
+        localStorage.removeItem("token");
+        setUser(null);
+    }
 
     return (
         <header>
@@ -16,9 +22,17 @@ function Header() {
                 <input type="submit" id="search-btn" value="🔍"></input>
             </form>
 
-            <div id="login">
-                <a href="#" className="btn">Login</a>
-            </div>
+            {!user ? 
+                <div>
+                <Link to="/login">
+                    <div id="login"> Login</div>
+                </Link> 
+                <Link to="/signup">
+                    <div id="signup">Signup</div>
+                </Link> 
+                </div>: 
+                <button id="logout" onClick={logout}>Logout</button>
+            }       
         </header>
     )
 }
