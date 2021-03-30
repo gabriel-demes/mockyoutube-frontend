@@ -2,12 +2,16 @@ import {useState, useEffect} from "react"
 import ReactPlayer from 'react-player'
 import '../css/VideoPage.css'
 import Comments from "./Comments"
-import {useParams} from 'react-router-dom'
+import {useParams, useHistory} from 'react-router-dom'
 import {createConsumer} from "@rails/actioncable"
 import {FacebookShareButton, TelegramShareButton, TwitterShareButton} from "react-share"
 import {FacebookIcon, TelegramIcon, TwitterIcon} from "react-share"
 
 const VideoPage = ({user}) => {
+    const history = useHistory()
+    const curPage = history.location.pathname
+    console.log(curPage)
+    
 
     const params = useParams()
     const id = params["id"]
@@ -131,9 +135,9 @@ const VideoPage = ({user}) => {
                 <span onClick={handleDislikes}>👎 {dislikes}</span>
             </section>
             <section>
-                <FacebookShareButton url="www.facebook.com"><FacebookIcon size={30} round={true} /></FacebookShareButton>
-                <TelegramShareButton url="www.facebook.com"><TelegramIcon size={30} round={true} /></TelegramShareButton>
-                <TwitterShareButton url="www.facebook.com"><TwitterIcon size={30} round={true} /></TwitterShareButton>
+                <FacebookShareButton url={video.url}><FacebookIcon size={30} round={true} /></FacebookShareButton>
+                <TelegramShareButton url={video.url}><TelegramIcon size={30} round={true} /></TelegramShareButton>
+                <TwitterShareButton url={video.url}><TwitterIcon size={30} round={true} /></TwitterShareButton>
             </section>
 
         </div>
