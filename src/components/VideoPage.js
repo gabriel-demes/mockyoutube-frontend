@@ -15,7 +15,7 @@ const VideoPage = () => {
             .then(r => r.json())
             .then(video => setVideo(video))
     },[id])
-    console.log(video.comments)
+    
     
     return(
         <div>
