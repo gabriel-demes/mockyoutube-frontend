@@ -4,6 +4,8 @@ import '../css/VideoPage.css'
 import Comments from "./Comments"
 import {useParams} from 'react-router-dom'
 import {createConsumer} from "@rails/actioncable"
+import {FacebookShareButton, TelegramShareButton, TwitterShareButton} from "react-share"
+import {FacebookIcon, TelegramIcon, TwitterIcon} from "react-share"
 
 const VideoPage = ({user}) => {
 
@@ -128,7 +130,12 @@ const VideoPage = ({user}) => {
                 <span onClick={handleLikes}>👍 {likes}</span> 
                 <span onClick={handleDislikes}>👎 {dislikes}</span>
             </section>
-            <section>Share</section>
+            <section>
+                <FacebookShareButton url="www.facebook.com"><FacebookIcon size={30} round={true} /></FacebookShareButton>
+                <TelegramShareButton url="www.facebook.com"><TelegramIcon size={30} round={true} /></TelegramShareButton>
+                <TwitterShareButton url="www.facebook.com"><TwitterIcon size={30} round={true} /></TwitterShareButton>
+            </section>
+
         </div>
         <Comments vidComments={vidComments} createComment={createComment} user={user}/>
         </div>
