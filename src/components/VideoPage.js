@@ -4,7 +4,7 @@ import '../css/VideoPage.css'
 import Comments from "./Comments"
 import {useParams} from 'react-router-dom'
 
-const VideoPage = () => {
+const VideoPage = ({user}) => {
 
     const params = useParams()
     const id = params["id"]
@@ -19,7 +19,7 @@ const VideoPage = () => {
 
 
     function createComment(body) {
-        const form = {body: body, user_id: 1, video_id: video.id, likes: 0, dislikes: 0}
+        const form = {body: body, user_id: user.id, video_id: video.id, likes: 0, dislikes: 0}
 
         fetch("http://localhost:3000/comments", {
             method: "POST", 
@@ -48,7 +48,7 @@ const VideoPage = () => {
             <section>👍{video.likes} 👎{video.dislikes}</section>
             <section>Share</section>
         </div>
-        <Comments vidComments={vidComments} createComment={createComment}/>
+        <Comments vidComments={vidComments} createComment={createComment} user={user}/>
         </div>
     )
 }

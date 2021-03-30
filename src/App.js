@@ -46,7 +46,7 @@ function App() {
           </Route>
 
           <Route path="/video/:id">
-            <VideoPage />
+            <VideoPage user={user} />
           </Route>
 
           <Route path="/new">
