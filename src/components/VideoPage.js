@@ -19,6 +19,10 @@ const VideoPage = ({user}) => {
     const [liked, setLiked] = useState(false)
     const [disliked, setDisliked] = useState(false)
 
+    const [subbed, setSubbed] = useState(false)
+
+    let friends = [] 
+
     useEffect(()=>{
         fetch(`http://localhost:3000/videos/${id}`)
             .then(r => r.json())
@@ -123,6 +127,19 @@ const VideoPage = ({user}) => {
             }
     }
 
+    function subscribe() {
+        if (!subbed) {
+            setSubbed(!subbed)
+            friends.push(username)
+            localStorage.setItem("friends", JSON.stringify(friends)) 
+            console.log(friends)
+        } else {
+            setSubbed(!subbed)
+            friends = friends.splice(friends.indexOf(username), 1)
+            localStorage.setItem("friends", JSON.stringify(friends)) 
+        }
+    }
+
     
     return(
         <div>
@@ -136,10 +153,15 @@ const VideoPage = ({user}) => {
             height="24em"
             />
         </div>
-        <div id="video-details">
-            <h3 className="vidTitle">{video.title}</h3>
-            <div className="created-at">{Date(video.created_at).split('G')[0]}</div>
-            <div className="username">{username}</div>
+        <div id="details-container">
+            <div id="video-details">
+                <h3 className="vidTitle">{video.title}</h3>
+                <div className="created-at">{Date(video.created_at).split('G')[0]}</div>
+                <div className="username">{username}</div>
+            </div>
+            <div id="sub">
+                <button type="submit" id="subscribe" onClick={subscribe}>{subbed? "Subscribed" : "Subscribe"}</button>
+            </div>
         </div>
         <div className="vidstats">
             <section>{video.views} Views</section>
