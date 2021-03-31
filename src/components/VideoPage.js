@@ -156,7 +156,8 @@ const VideoPage = ({user, favorites}) => {
                     setIsFav((isFav) => !isFav)})
             }
         }
-    else(history.push("/login"))
+    else{history.push("/login")}
+}
 
     function subscribe() {
         if (!subbed) {
