@@ -20,17 +20,14 @@ const VideoPage = ({user, favorites}) => {
     const [dislikes, setDislikes] = useState(null)
     const [liked, setLiked] = useState(false)
     const [disliked, setDisliked] = useState(false)
-<<<<<<< HEAD
     const [isFav, setIsFav] = useState(false)
     const [username, setUserName] = useState("")
     const [fav, setFav] = useState("")
-=======
 
     const [subbed, setSubbed] = useState(false)
 
     let friends = [] 
 
->>>>>>> f0513626083f2df1d1e378e5861ac6a057e9c895
     useEffect(()=>{
         fetch(`http://localhost:3000/videos/${id}`)
             .then(r => r.json())
