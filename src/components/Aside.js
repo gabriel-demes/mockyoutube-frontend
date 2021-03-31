@@ -13,7 +13,7 @@ function Aside() {
             <div><Link to="/home"><HomeIcon/> Home</Link></div>
             <div><Link to="/new"><VideoCallIcon/>Upload Video</Link></div>
             <div><Link to="#"><PeopleIcon/>Friends</Link></div>
-            <div><Link to="#"><StarIcon/>Favorites</Link></div>
+            <div><Link to="/favorites"><StarIcon/>Favorites</Link></div>
             <div><Link to="/history"><HistoryIcon/>History</Link></div>
         </aside>
     )

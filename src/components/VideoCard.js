@@ -5,20 +5,13 @@ import '../css/VideoCard.css'
 
 function VideoCard( {video} ) {
 
-    const [username, setUserName] = useState("")
-
-    fetch(`http://localhost:3000/users/${video.user_id}`)
-    .then(r => r.json())
-    .then(user => setUserName(user.username))
-
-
     return (
         <div className="video-card">
             <Link to={`/video/${video.id}`}>
                 <img className="video-preview" src={video.thumbnail} alt={video.title} />
                 <div className="video-detail">
                     <div id="title">{video.title}</div>
-                    <div id="username">{username}</div>
+                    <div id="username">{video.user.username}</div>
                     <div id="created-date">{Date(video.created_at).split('G')[0]}</div>
                 </div>
             </Link>

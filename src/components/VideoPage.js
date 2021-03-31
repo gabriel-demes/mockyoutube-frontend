@@ -7,18 +7,22 @@ import {createConsumer} from "@rails/actioncable"
 import {FacebookShareButton, TelegramShareButton, TwitterShareButton} from "react-share"
 import {FacebookIcon, TelegramIcon, TwitterIcon} from "react-share"
 import StarIcon from "@material-ui/icons/Star"
+import {useHistory} from "react-router"
 
-const VideoPage = ({user}) => {
+const VideoPage = ({user, favorites}) => {
     const params = useParams()
     const id = params["id"]
     const [video, setVideo] = useState("")
     const [vidComments, setVidComments] = useState([])
+    const history = useHistory()
 
     const [likes, setLikes] = useState(null)
     const [dislikes, setDislikes] = useState(null)
     const [liked, setLiked] = useState(false)
     const [disliked, setDisliked] = useState(false)
-
+    const [isFav, setIsFav] = useState(false)
+    const [username, setUserName] = useState("")
+    const [fav, setFav] = useState("")
     useEffect(()=>{
         fetch(`http://localhost:3000/videos/${id}`)
             .then(r => r.json())
@@ -26,13 +30,18 @@ const VideoPage = ({user}) => {
                 setVideo(video); 
                 setVidComments(video.comments); 
                 setLikes(video.likes); 
-                setDislikes(video.dislikes);
+                setDislikes(video.dislikes)
+                setUserName(video.user.username)
                 if (localStorage.getItem("vidHistory")){
                     const vidHistory = JSON.parse(localStorage.getItem("vidHistory"))
                     localStorage.setItem("vidHistory", JSON.stringify([video,...vidHistory]))
                 }else{localStorage.setItem("vidHistory", JSON.stringify([video]))}
+                if(user && video.favorites.filter(favorite => favorite.user_id === user.id).length > 0){
+                    setIsFav(true)
+                    setFav(video.favorites.filter(fav => fav.user_id === user.id))
+                }
             })
-    },[id])
+    },[id, favorites, user])
 
     const token = localStorage.getItem("token")
 
@@ -56,13 +65,6 @@ const VideoPage = ({user}) => {
         cable.subscriptions.create(parameters, handlers)
 
     }, [id])
-
-
-    const [username, setUserName] = useState("")
-
-    fetch(`http://localhost:3000/users/${video.user_id}`)
-    .then(r => r.json())
-    .then(user => setUserName(user.username))
 
 
     function createComment(body) {
@@ -123,6 +125,36 @@ const VideoPage = ({user}) => {
             }
     }
 
+    const favAction = () => {
+        const token = localStorage.getItem("token")
+        if(token){
+            if(isFav){
+                const favId = fav[0].id 
+                fetch(`http://localhost:3000/favorites/${favId}`, {
+                    method: "DELETE"
+                })
+                .then(r=>r.json())
+                .then(delFav => {
+                    setIsFav(false)})
+            }else{
+                fetch('http://localhost:3000/favorites', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`
+                    },
+                    body: JSON.stringify({video_id: parseInt(video.id)})
+                })
+                .then(r => r.json())
+                .then(newFav => {
+                    setFav([newFav])
+                    setIsFav((isFav) => !isFav)})
+            }
+        }
+    else(history.push("/login"))
+
+    }
+
     
     return(
         <div>
@@ -148,7 +180,7 @@ const VideoPage = ({user}) => {
                 <span onClick={handleDislikes}>👎 {dislikes}</span>
             </section>
             <section>
-                <StarIcon style={{fill: "black"}}/>
+                <div onClick={favAction}><StarIcon style={{fill: isFav ? "yellow" : "black"}}/></div>
                 <FacebookShareButton url={video.url}><FacebookIcon size={30} round={true} /></FacebookShareButton>
                 <TelegramShareButton url={video.url}><TelegramIcon size={30} round={true} /></TelegramShareButton>
                 <TwitterShareButton url={video.url}><TwitterIcon size={30} round={true} /></TwitterShareButton>

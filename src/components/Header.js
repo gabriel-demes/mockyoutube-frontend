@@ -1,16 +1,17 @@
 import React from 'react' 
 import { Link } from 'react-router-dom'
+import {} from "react-router"
 import '../css/Header.css'
 import Search from './Search'
 
 function Header({user, setUser}) {
 
-    
-    
     const logout = () =>{
         
         localStorage.removeItem("token");
         setUser(null);
+        window.location.reload()
+
     }
 
     return (

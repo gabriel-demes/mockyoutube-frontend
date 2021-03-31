@@ -10,10 +10,12 @@ import {Switch, Route} from "react-router-dom"
 import SignUp from "./components/SignUp"
 import SearchPage from './components/SearchPage';
 import History from './components/History';
+import Favorites from './components/Favorites';
 function App() {
 
   const [videos, setVideos] = useState([])
   const [user, setUser] = useState(null)
+  const [favorites, setFavorites] = useState([])
   
 
   useEffect(() => {
@@ -33,6 +35,7 @@ function App() {
         .then((r) => r.json())
         .then((user) => { 
           setUser(user);
+          setFavorites(user.favorited.map(video => video.id))
         });
     }
   }, []);
@@ -49,7 +52,7 @@ function App() {
           </Route>
 
           <Route path="/video/:id">
-            <VideoPage user={user} />
+            <VideoPage user={user} favorites={favorites} />
           </Route>
 
           <Route path="/new">
@@ -74,6 +77,12 @@ function App() {
             <main>
               <Aside />
               <History videos={videos}/>
+            </main>
+          </Route>
+          <Route path="/favorites">
+            <main>
+              <Aside />
+              <Favorites videos={videos} user={user}/>
             </main>
           </Route>
         </Switch>
