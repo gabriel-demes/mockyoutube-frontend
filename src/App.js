@@ -9,10 +9,12 @@ import Login from './components/Login'
 import {Switch, Route} from "react-router-dom"
 import SignUp from "./components/SignUp"
 import SearchPage from './components/SearchPage';
+import History from './components/History';
 function App() {
 
   const [videos, setVideos] = useState([])
   const [user, setUser] = useState(null)
+  
 
   useEffect(() => {
     fetch('http://localhost:3000/videos')
@@ -68,7 +70,12 @@ function App() {
               <SearchPage/>
             </main>
           </Route>
-
+          <Route path="/history">
+            <main>
+              <Aside />
+              <History videos={videos}/>
+            </main>
+          </Route>
         </Switch>
       </div>
     
