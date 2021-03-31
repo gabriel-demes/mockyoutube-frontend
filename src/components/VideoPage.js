@@ -212,5 +212,6 @@ const VideoPage = ({user, favorites}) => {
         </div>
     )
 }
+}
 
 export default VideoPage
