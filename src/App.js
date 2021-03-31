@@ -37,7 +37,7 @@ function App() {
         .then((r) => r.json())
         .then((user) => { 
           setUser(user);
-          setFavorites(user.favorites.map(video => video.id))
+          setFavorites(user.favorited.map(video => video.id))
         });
     }
   }, []);
