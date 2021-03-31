@@ -10,7 +10,7 @@ const NewVidForm = () => {
     const[description, setDescription]= useState("")
 
     const history = useHistory()
-
+    const token = localStorage.getItem("token")
     const handleSubmit = e => {
         e.preventDefault()
         const form = new FormData()
@@ -25,6 +25,9 @@ const NewVidForm = () => {
 
         fetch("http://localhost:3000/videos", {
             method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`
+              },
             body: form
         })
         .then(r => r.json())
