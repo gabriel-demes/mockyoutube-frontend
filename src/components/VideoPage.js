@@ -6,6 +6,7 @@ import {useParams} from 'react-router-dom'
 import {createConsumer} from "@rails/actioncable"
 import {FacebookShareButton, TelegramShareButton, TwitterShareButton} from "react-share"
 import {FacebookIcon, TelegramIcon, TwitterIcon} from "react-share"
+import StarIcon from "@material-ui/icons/Star"
 
 const VideoPage = ({user}) => {
     const params = useParams()
@@ -147,6 +148,7 @@ const VideoPage = ({user}) => {
                 <span onClick={handleDislikes}>👎 {dislikes}</span>
             </section>
             <section>
+                <StarIcon style={{fill: "black"}}/>
                 <FacebookShareButton url={video.url}><FacebookIcon size={30} round={true} /></FacebookShareButton>
                 <TelegramShareButton url={video.url}><TelegramIcon size={30} round={true} /></TelegramShareButton>
                 <TwitterShareButton url={video.url}><TwitterIcon size={30} round={true} /></TwitterShareButton>
