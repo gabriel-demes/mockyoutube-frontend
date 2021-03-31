@@ -1,5 +1,6 @@
 import {useState, } from "react"
 import { useHistory } from "react-router";
+import "../css/SignUp.css"
 
 
 const SignUp = ({setUser}) => {
@@ -46,31 +47,37 @@ const SignUp = ({setUser}) => {
     }
     const { name, username, password } = formData;
     return(
-        <form autoComplete="off" onSubmit={handleSubmit}>
+        <form autoComplete="off" onSubmit={handleSubmit} id="signup-form">
             {errors.map(err => <p key={err}>{err}</p>)}
-            <h1>SignUp</h1>
-            <label>Name</label>
-            <input 
-                type="text"
-                name="name"
-                value={name}
-                onChange={handleChange} 
-            />
-            <label>Username</label>
-            <input 
-                type="text"
-                name="username"
-                value={username}
-                onChange={handleChange} 
-            />
-            <label>Password</label>
-            <input
-                type="password"
-                name="password"
-                autoComplete="current-password"
-                value={password}
-                onChange={handleChange}
-            />
+            <h1>Sign Up</h1>
+            <div className="signup-control">
+                <label>Name</label>
+                <input 
+                    type="text"
+                    name="name"
+                    value={name}
+                    onChange={handleChange} 
+                />
+            </div>
+            <div className="signup-control">
+                <label>Username</label>
+                <input 
+                    type="text"
+                    name="username"
+                    value={username}
+                    onChange={handleChange} 
+                />
+            </div>
+            <div className="signup-control">
+                <label>Password</label>
+                <input
+                    type="password"
+                    name="password"
+                    autoComplete="current-password"
+                    value={password}
+                    onChange={handleChange}
+                />
+            </div>
             
             <button type="submit">Sign Up</button> 
         </form>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
+import "../css/Login.css"
 
 const Login = ({setUser}) => {
 
@@ -35,23 +36,27 @@ const Login = ({setUser}) => {
     }
     return (
         <div>
-            <form onSubmit={handleSubmit} autoComplete="off">
+            <form onSubmit={handleSubmit} autoComplete="off" id="login-form">
                 {errors.map(err => <p key={err}>{err}</p>)}
                 <h1>Login</h1>
-                <label>Username</label>
-                <input
-                    type="text"
-                    name="username"
-                    value={formData.username}
-                    onChange={handleChange}
-                />
-                <label>Password</label>
-                <input
-                    type="password"
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                />
+                <div className="login-control">
+                    <label>Username</label>
+                    <input
+                        type="text"
+                        name="username"
+                        value={formData.username}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="login-control">
+                    <label>Password</label>
+                    <input
+                        type="password"
+                        name="password"
+                        value={formData.password}
+                        onChange={handleChange}
+                    />
+                </div>
                 <input type="submit" value="Login" />
             </form>
         </div>

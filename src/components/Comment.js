@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import '../css/Comment.css'
 
-const Comment = ({user, body}) => {
+const Comment = ({body, created_at, user_id}) => {
     const [thumbUp, setThumbUp] = useState(false)
     const [likes, setLikes] = useState(0)
     const [thumbDown, setThumbDown] = useState(false)
@@ -27,11 +27,21 @@ const Comment = ({user, body}) => {
         }
     }
 
+    const [username, setUserName] = useState("")
+
+    fetch(`http://localhost:3000/users/${user_id}`)
+    .then(r => r.json())
+    .then(user => setUserName(user.username))
+
+
     return (
 
         <div className="comment" >
-            <h6 style={{display:"inline"}}>{user} </h6>
-            <p style={{display:"inline"}}>{body}</p>
+            <div>
+                <span>{username}</span>
+                <span>{Date(created_at).split('G')[0]}</span>
+            </div>
+            <div>{body}</div>
             <div className="comment-likes">
                 <span className="thumbup" onClick={handleLike}>👍</span>&nbsp;&nbsp;<span id="likes-counter">{likes !== 0 ? likes: null }</span> &nbsp;&nbsp;&nbsp;&nbsp;
                 <span className="thumbdown" onClick={handleDislike}>👎</span>&nbsp;&nbsp;<span id="dislikes-counter">{ dislikes !== 0 ? dislikes : null }</span>

@@ -24,7 +24,7 @@ function Header({user, setUser}) {
             !user ? 
                 <div>
                 <Link to="/login">
-                    <div id="login"> Login</div>
+                    <div id="login">Login</div>
                 </Link> 
                 <Link to="/signup">
                     <div id="signup">Signup</div>

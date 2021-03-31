@@ -1,3 +1,21 @@
+* {
+  color: white;
+  background-color: black;
+}
+
+a, button, div, span, section, h1, h5, input, label {
+  color: white;
+}
+
+input, button {
+  border: 1px white solid;
+}
+
+input#submit-btn {
+  border: 1px white solid;
+}
+
+
 .App {
   text-align: center;
 }

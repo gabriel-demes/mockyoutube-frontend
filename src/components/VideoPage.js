@@ -52,6 +52,14 @@ const VideoPage = ({user}) => {
 
     }, [id])
 
+
+    const [username, setUserName] = useState("")
+
+    fetch(`http://localhost:3000/users/${video.user_id}`)
+    .then(r => r.json())
+    .then(user => setUserName(user.username))
+
+
     function createComment(body) {
         const form = {body: body, user_id: user.id, video_id: video.id, likes: 0, dislikes: 0}
 
@@ -127,7 +135,11 @@ const VideoPage = ({user}) => {
             height="24em"
             />
         </div>
-        <h4 className="vidTitle">{video.title}</h4>
+        <div id="video-details">
+            <h3 className="vidTitle">{video.title}</h3>
+            <div className="created-at">{Date(video.created_at).split('G')[0]}</div>
+            <div className="username">{username}</div>
+        </div>
         <div className="vidstats">
             <section>{video.views} Views</section>
             <section>

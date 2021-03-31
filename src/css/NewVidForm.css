@@ -1,7 +1,6 @@
 form#new-video-form {
     display: flex;
     flex-direction: column;
-    border: 1px black solid;
 }
 
 div.input-control {
