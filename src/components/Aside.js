@@ -1,17 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import '../css/Aside.css'
+import HomeIcon from '@material-ui/icons/Home';
+import VideoCallIcon from '@material-ui/icons/VideoCall';
+import PeopleIcon from '@material-ui/icons/People';
+import StarIcon from '@material-ui/icons/Star';
+import HistoryIcon from '@material-ui/icons/History';
 
 function Aside() {
     return (
         <aside>
-            <div><Link to="/home">Home</Link></div>
-            <div><Link to="/new">Upload a Video</Link></div>
-            <div><Link to="#">Friends</Link></div>
-            <div><Link to="#">Favorites</Link></div>
-            <div><Link to="#">Library</Link></div>
-            <div><Link to="#">Videos</Link></div>
-            <div><Link to="#">History</Link></div>
+            <div><Link to="/home"><HomeIcon/> Home</Link></div>
+            <div><Link to="/new"><VideoCallIcon/>Upload Video</Link></div>
+            <div><Link to="#"><PeopleIcon/>Friends</Link></div>
+            <div><Link to="#"><StarIcon/>Favorites</Link></div>
+            <div><Link to="/history"><HistoryIcon/>History</Link></div>
         </aside>
     )
 }

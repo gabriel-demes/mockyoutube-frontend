@@ -2,17 +2,12 @@ import {useState, useEffect} from "react"
 import ReactPlayer from 'react-player'
 import '../css/VideoPage.css'
 import Comments from "./Comments"
-import {useParams, useHistory} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import {createConsumer} from "@rails/actioncable"
 import {FacebookShareButton, TelegramShareButton, TwitterShareButton} from "react-share"
 import {FacebookIcon, TelegramIcon, TwitterIcon} from "react-share"
 
 const VideoPage = ({user}) => {
-    const history = useHistory()
-    const curPage = history.location.pathname
-    console.log(curPage)
-    
-
     const params = useParams()
     const id = params["id"]
     const [video, setVideo] = useState("")
@@ -26,7 +21,16 @@ const VideoPage = ({user}) => {
     useEffect(()=>{
         fetch(`http://localhost:3000/videos/${id}`)
             .then(r => r.json())
-            .then(video => {setVideo(video); setVidComments(video.comments); setLikes(video.likes); setDislikes(video.dislikes)})
+            .then(video => {
+                setVideo(video); 
+                setVidComments(video.comments); 
+                setLikes(video.likes); 
+                setDislikes(video.dislikes);
+                if (localStorage.getItem("vidHistory")){
+                    const vidHistory = JSON.parse(localStorage.getItem("vidHistory"))
+                    localStorage.setItem("vidHistory", JSON.stringify([video,...vidHistory]))
+                }else{localStorage.setItem("vidHistory", JSON.stringify([video]))}
+            })
     },[id])
 
     const token = localStorage.getItem("token")
@@ -42,10 +46,10 @@ const VideoPage = ({user}) => {
                 setVidComments((vidComments)=>[...vidComments, data])
             },
             connected(){
-                console.log("connected")
+                // console.log("connected")
             },
             disconnected(){
-                console.log('disconnected')
+                // console.log('disconnected')
             }
         }
         cable.subscriptions.create(parameters, handlers)
@@ -83,8 +87,7 @@ const VideoPage = ({user}) => {
                     "Content-Type": "application/json"},
                 body: JSON.stringify({...video, likes: likes})
             })
-            .then(r => r.json())
-            .then(newVideo => console.log(newVideo)) }
+        }
         else {
             setLiked(false)
             setLikes(likes - 1)
@@ -107,10 +110,7 @@ const VideoPage = ({user}) => {
                     "Content-Type": "application/json"},
                 body: JSON.stringify({...video, dislikes: dislikes})
             })
-            .then(r => r.json())
-            .then(newVideo => console.log(newVideo)) }
-
-            else {
+            }else {
                 setDisliked(false)
                 setDislikes(dislikes - 1)
                 fetch(`http://localhost:3000/videos/${id}`, {
