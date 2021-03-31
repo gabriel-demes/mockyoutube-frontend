@@ -11,6 +11,8 @@ import SignUp from "./components/SignUp"
 import SearchPage from './components/SearchPage';
 import History from './components/History';
 import Favorites from './components/Favorites';
+import Friends from './components/Friends'
+
 function App() {
 
   const [videos, setVideos] = useState([])
@@ -61,6 +63,13 @@ function App() {
 
           <Route path="/login">
             <Login setUser={setUser}/>
+          </Route>
+
+          <Route path="/friends">
+            <main>
+              <Aside />
+              <Friends/>
+            </main>
           </Route>
 
           <Route path="/signup">
