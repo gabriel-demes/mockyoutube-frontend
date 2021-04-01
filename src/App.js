@@ -47,10 +47,10 @@ function App() {
         <Header user={user} setUser={setUser} />
         <Switch>
           <Route path="/home">
-            <main>
+            
               <Aside />
                 <VideoContainer videos={videos} />
-            </main>
+            
           </Route>
 
           <Route path="/video/:id">

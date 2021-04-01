@@ -30,15 +30,3 @@ div#video-details {
   margin-bottom: 10px;
 }
 
-div#details-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-button#subscribe {
-  justify-self: flex-end;
-  padding: 10px 20px;
-  margin: 50px;
-  margin-right: 200px;
-}
