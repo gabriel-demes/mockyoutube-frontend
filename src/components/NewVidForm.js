@@ -3,12 +3,13 @@ import '../css/NewVidForm.css'
 import {useHistory} from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
       margin: theme.spacing(1),
-      width: '25ch',
+      width: '50ch',
     },
   },
 }));
@@ -19,11 +20,14 @@ const NewVidForm = () => {
     const[newImage, setImage] = useState("")
     const[title, setTitle]= useState("")
     const[description, setDescription]= useState("")
+    const [loading, setLoading] = useState(false)
+   
 
     const history = useHistory()
     const token = localStorage.getItem("token")
     const handleSubmit = e => {
         e.preventDefault()
+        setLoading(true)
         const form = new FormData()
         form.append("newImage", newImage)
         form.append("newVideo", newVideo)
@@ -42,7 +46,10 @@ const NewVidForm = () => {
             body: form
         })
         .then(r => r.json())
-        .then(video => history.push(`/video/${video.id}`))
+        .then(video => {
+            setLoading(false)
+            history.push(`/video/${video.id}`)
+        })
     }
 
 
@@ -50,6 +57,11 @@ const NewVidForm = () => {
     const classes = useStyles();
     return(
         <div className="new-video-div">
+            {loading ?  
+                <div className={classes.root}>
+                    <LinearProgress />
+                </div>
+            : null}
             <form onSubmit={handleSubmit} id="new-video-form" >
                 <div className="input-control">
                     <label>Title</label>
