@@ -8,6 +8,7 @@ import {FacebookShareButton, TelegramShareButton, TwitterShareButton} from "reac
 import {FacebookIcon, TelegramIcon, TwitterIcon} from "react-share"
 import StarIcon from "@material-ui/icons/Star"
 import {useHistory} from "react-router"
+import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite';
 
 const VideoPage = ({user, favorites}) => {
     const params = useParams()
@@ -174,7 +175,7 @@ const VideoPage = ({user, favorites}) => {
 
     
     return(
-        <div>
+        <div className="vidpage">
         <div className="player-wrapper">
             <ReactPlayer
             className='react-player'
@@ -183,6 +184,7 @@ const VideoPage = ({user, favorites}) => {
             light={video.thumbnail}
             width="100%"
             height="24em"
+            playIcon={<PlayCircleFilledWhiteIcon fontSize="large"></PlayCircleFilledWhiteIcon>}
             />
         </div>
         <div id="details-container">

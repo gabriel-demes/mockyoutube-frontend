@@ -10,11 +10,11 @@ import HistoryIcon from '@material-ui/icons/History';
 function Aside() {
     return (
         <aside>
-            <div><Link to="/home"><HomeIcon/> Home</Link></div>
-            <div><Link to="/new"><VideoCallIcon/>Upload Video</Link></div>
-            <div><Link to="/friends"><PeopleIcon/>Friends</Link></div>
-            <div><Link to="/favorites"><StarIcon/>Favorites</Link></div>
-            <div><Link to="/history"><HistoryIcon/>History</Link></div>
+            <div><Link to="/home"><HomeIcon/> <br></br>Home</Link></div>
+            <div><Link to="/new"><VideoCallIcon/> <br></br>Upload Video</Link></div>
+            <div><Link to="/friends"><PeopleIcon/> <br></br>Friends</Link></div>
+            <div><Link to="/favorites"><StarIcon/> <br></br>Favorites</Link></div>
+            <div><Link to="/history"><HistoryIcon/> <br></br>History</Link></div>
         </aside>
     )
 }

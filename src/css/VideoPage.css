@@ -1,3 +1,10 @@
+
+.vidpage{
+  grid-row-start:2;
+  grid-column-start:1;
+  grid-column-end: 4;
+  
+}
 .player-wrapper {
    
     background-color: black;
@@ -10,6 +17,10 @@
   position: relative;
   margin-left: auto;
   margin-right: auto;
+}
+
+.react-player__play-icon{
+  background-color: black;
 }
 
 .vidstats{
@@ -30,3 +41,15 @@ div#video-details {
   margin-bottom: 10px;
 }
 
+div#details-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+button#subscribe {
+  justify-self: flex-end;
+  padding: 10px 20px;
+  margin: 50px;
+  margin-right: 200px;
+}

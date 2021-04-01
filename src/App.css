@@ -21,6 +21,8 @@ input#submit-btn {
   display: grid;
   grid-template-columns: 200px 1fr;
   grid-template-rows: 125px 1fr;
+  height: 100vh;
+
 }
 
 .App-logo {
