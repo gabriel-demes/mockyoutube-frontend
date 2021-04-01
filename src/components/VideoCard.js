@@ -139,8 +139,7 @@ function VideoCard( {video} ) {
           <Item>
             <Avatar
               className={styles.avatar}
-              src={'https://i.pravatar.cc/300?img=13'}
-            />
+            >{video.user.username.slice()[0]}</Avatar>
           </Item>
           <Info position={'middle'} useStyles={useNewsInfoStyles}>
             <InfoTitle>{video.title}</InfoTitle>

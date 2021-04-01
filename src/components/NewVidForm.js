@@ -33,10 +33,7 @@ const NewVidForm = () => {
         form.append("newVideo", newVideo)
         form.append("title",title)
         form.append("description", description)
-        setDescription("")
-        setImage("")
-        setTitle("")
-        setVideo("")
+        
 
         fetch("http://localhost:3000/videos", {
             method: "POST",
@@ -48,7 +45,12 @@ const NewVidForm = () => {
         .then(r => r.json())
         .then(video => {
             setLoading(false)
+            setDescription("")
+            setImage("")
+            setTitle("")
+            setVideo("")
             history.push(`/video/${video.id}`)
+
         })
     }
 
