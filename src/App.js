@@ -48,7 +48,7 @@ function App() {
         <Switch>
           <Route path="/home">
             
-              <Aside />
+              <Aside user={user} />
                 <VideoContainer videos={videos} />
             
           </Route>
@@ -66,10 +66,10 @@ function App() {
           </Route>
 
           <Route path="/friends">
-            <main>
-              <Aside />
+            
+              <Aside user={user}/>
               <Friends/>
-            </main>
+            
           </Route>
 
           <Route path="/signup">
@@ -77,22 +77,22 @@ function App() {
           </Route>
 
           <Route path="/search/:term">
-            <main>
-              <Aside />
+            
+              <Aside user={user}/>
               <SearchPage/>
-            </main>
+          
           </Route>
           <Route path="/history">
-            <main>
-              <Aside />
+            
+              <Aside user={user}/>
               <History videos={videos}/>
-            </main>
+            
           </Route>
           <Route path="/favorites">
-            <main>
-              <Aside />
+            
+              <Aside user={user}/>
               <Favorites videos={videos} user={user}/>
-            </main>
+            
           </Route>
         </Switch>
       </div>

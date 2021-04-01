@@ -28,6 +28,7 @@
   margin-left: 5rem;
   display:flex;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 div#video-details {

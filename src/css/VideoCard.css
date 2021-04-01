@@ -2,5 +2,7 @@
     background-color: #eee;
     max-width: 300px;
     max-height: 250px;
+    align-self: flex-start;
+    margin-bottom: 6rem;
 
 }

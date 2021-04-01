@@ -7,13 +7,13 @@ import PeopleIcon from '@material-ui/icons/People';
 import StarIcon from '@material-ui/icons/Star';
 import HistoryIcon from '@material-ui/icons/History';
 
-function Aside() {
+function Aside({user}) {
     return (
         <aside>
             <div><Link to="/home"><HomeIcon/> <br></br>Home</Link></div>
-            <div><Link to="/new"><VideoCallIcon/> <br></br>Upload Video</Link></div>
-            <div><Link to="/friends"><PeopleIcon/> <br></br>Friends</Link></div>
-            <div><Link to="/favorites"><StarIcon/> <br></br>Favorites</Link></div>
+            <div><Link to={user ? "/new" : "/login"}><VideoCallIcon/> <br></br>Upload Video</Link></div>
+            <div><Link to={user ? "/friends" : "/login"}><PeopleIcon/> <br></br>Friends</Link></div>
+            <div><Link to={user ?"/favorites" : "/login"}><StarIcon/> <br></br>Favorites</Link></div>
             <div><Link to="/history"><HistoryIcon/> <br></br>History</Link></div>
         </aside>
     )

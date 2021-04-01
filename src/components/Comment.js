@@ -1,5 +1,8 @@
 import React, {useState} from "react"
 import '../css/Comment.css'
+import { palette } from '@material-ui/system';
+
+
 
 const Comment = ({body, created_at, user_id}) => {
     const [thumbUp, setThumbUp] = useState(false)
@@ -37,11 +40,10 @@ const Comment = ({body, created_at, user_id}) => {
     return (
 
         <div className="comment" >
-            <div>
-                <span>{username}</span>
-                <span>{Date(created_at).split('G')[0]}</span>
-            </div>
-            <div>{body}</div>
+            
+            <span>{username}</span><br></br>
+            <small>{Date(created_at).split('G')[0]}</small>
+            <div><p>{body}</p></div>
             <div className="comment-likes">
                 <span className="thumbup" onClick={handleLike}>👍</span>&nbsp;&nbsp;<span id="likes-counter">{likes !== 0 ? likes: null }</span> &nbsp;&nbsp;&nbsp;&nbsp;
                 <span className="thumbdown" onClick={handleDislike}>👎</span>&nbsp;&nbsp;<span id="dislikes-counter">{ dislikes !== 0 ? dislikes : null }</span>

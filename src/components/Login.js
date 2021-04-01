@@ -35,7 +35,7 @@ const Login = ({setUser}) => {
             
     }
     return (
-        <div>
+        <div id="login-div">
             <form onSubmit={handleSubmit} autoComplete="off" id="login-form">
                 {errors.map(err => <p key={err}>{err}</p>)}
                 <h1>Login</h1>

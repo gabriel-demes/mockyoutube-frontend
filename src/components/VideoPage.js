@@ -27,7 +27,7 @@ const VideoPage = ({user, favorites}) => {
 
     const [subbed, setSubbed] = useState(false)
 
-    let friends = [] 
+    let friends = JSON.parse(localStorage.getItem("friends") )
 
     useEffect(()=>{
         fetch(`http://localhost:3000/videos/${id}`)
@@ -163,11 +163,12 @@ const VideoPage = ({user, favorites}) => {
     function subscribe() {
         if (!subbed) {
             setSubbed(!subbed)
-            friends.push(username)
-            localStorage.setItem("friends", JSON.stringify(friends)) 
+            friends = JSON.parse(localStorage.getItem("friends"))
+            localStorage.setItem("friends", JSON.stringify([...friends, username])) 
             console.log(friends)
         } else {
             setSubbed(!subbed)
+            friends = JSON.parse(localStorage.getItem("friends"))
             friends = friends.splice(friends.indexOf(username), 1)
             localStorage.setItem("friends", JSON.stringify(friends)) 
         }
@@ -198,13 +199,13 @@ const VideoPage = ({user, favorites}) => {
             </div>
         </div>
         <div className="vidstats">
-            <section>{video.views} Views</section>
-            <section>
+            <section style={{backgroundColor:"white"}}>{video.views} Views</section>
+            <section style={{backgroundColor:"white"}}>
                 <span onClick={handleLikes}>👍 {likes}</span> 
                 <span onClick={handleDislikes}>👎 {dislikes}</span>
             </section>
-            <section>
-                <div onClick={favAction}><StarIcon style={{fill: isFav ? "yellow" : "black"}}/></div>
+            <section style={{backgroundColor:"white"}}>
+                <div style={{textAlign: "center"}} onClick={favAction}><StarIcon style={{fill: isFav ? "yellow" : "black"}}/></div>
                 <FacebookShareButton url={video.url}><FacebookIcon size={30} round={true} /></FacebookShareButton>
                 <TelegramShareButton url={video.url}><TelegramIcon size={30} round={true} /></TelegramShareButton>
                 <TwitterShareButton url={video.url}><TwitterIcon size={30} round={true} /></TwitterShareButton>

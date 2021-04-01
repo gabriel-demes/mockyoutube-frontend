@@ -1,6 +1,17 @@
 import {useState} from "react"
 import '../css/NewVidForm.css'
 import {useHistory} from "react-router-dom"
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
+}));
 
 const NewVidForm = () => {
 
@@ -36,10 +47,10 @@ const NewVidForm = () => {
 
 
 
-
+    const classes = useStyles();
     return(
         <div className="new-video-div">
-            <form onSubmit={handleSubmit} id="new-video-form">
+            <form onSubmit={handleSubmit} id="new-video-form" >
                 <div className="input-control">
                     <label>Title</label>
                     <input type="text" name="title" onChange={e=>setTitle(e.target.value)} value={title}></input>

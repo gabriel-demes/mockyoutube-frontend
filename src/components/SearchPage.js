@@ -23,10 +23,11 @@ const SearchPage = () => {
     
 
     return (
-        <div>
-            <h4>Results for: {`"${term}"`}</h4>
+     
+        <section>
             {displayVids()}
-        </div>
+        </section>
+        
     )
 }
 
