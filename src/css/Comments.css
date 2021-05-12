@@ -1,0 +1,30 @@
+div.comments {
+    margin: 5em;
+    width: 80%;
+    /* height: 100%; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+form#new-comment-form {
+    display: flex;
+    flex-direction: column;
+}
+
+input#comment-field {
+    border: none;
+    border-bottom: 1px solid black;
+    width: 70%;
+    padding: 5px;
+    margin: 10px;
+}
+
+input#submit-btn {
+    border: none;
+    padding: 6px 10px;
+    width: 180px;
+    align-self: flex-end;
+    margin-right: 120px;
+}

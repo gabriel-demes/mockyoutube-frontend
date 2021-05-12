@@ -1,0 +1,23 @@
+div.comment{
+    border: 1px ;
+    margin: 2rem;
+    padding: 1rem;
+    flex-direction: column;
+    text-align: left;
+    flex-basis: auto;
+    margin: 5px;
+}
+
+div span {
+    margin-right: 5px;
+}
+.textbody {
+    margin: 2rem
+}
+
+div p {
+    margin-left: 2rem;
+}
+div small{
+    margin-left: 2em;
+}

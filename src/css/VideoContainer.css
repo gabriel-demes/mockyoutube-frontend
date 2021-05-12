@@ -1,0 +1,12 @@
+section {
+    grid-column-start: 2;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    margin: 10px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow-y: scroll;
+    background-color:#eee
+}
+

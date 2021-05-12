@@ -1,0 +1,29 @@
+div.new-video-div {
+    grid-column-start: 2;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    /* display: block; */
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    
+    
+    
+}
+
+#new-video-form{
+    display: flex;
+    background-color: #eee;
+    flex-direction: column; 
+    justify-content: space-between;
+}
+
+div.input-control {
+    background-color: #eee;
+    margin: 20px;
+}
+
+div.input-control label {
+    background-color: #eee;
+    margin: 10px;
+}

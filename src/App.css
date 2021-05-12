@@ -1,5 +1,28 @@
+* {
+  color: black;
+  background-color: white;
+}
+
+a, button, div, span, section, h1, h5, input, label {
+  color: black;
+}
+
+input, button {
+  border: 1px black solid;
+}
+
+input#submit-btn {
+  border: 1px black solid;
+}
+
+
 .App {
   text-align: center;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 125px 1fr;
+  height: 100vh;
+
 }
 
 .App-logo {
@@ -36,3 +59,8 @@
     transform: rotate(360deg);
   }
 }
+
+/* main {
+  display: flex;
+  flex-direction: row;
+} */

@@ -1,0 +1,29 @@
+div#login-div{
+    grid-column-start: 2;
+    grid-row-start: 2;
+    grid-row-end: 4; 
+     display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    
+}
+
+form#login-form{
+    /* grid-column-start: 2;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%; */
+
+}
+
+.login-control {
+    margin: 15px;
+}
+
+.login-control label {
+    margin-right: 10px;
+}
