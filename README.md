@@ -1,4 +1,4 @@
-## MomentJournal
+## MockTube
 
 MockTube is a video streaming application designed as a YouTube clone. It integrates WebSockets to offer users a realtime comments feature. Users are also able to upload video files as well as thumbnails for each video. 
 
